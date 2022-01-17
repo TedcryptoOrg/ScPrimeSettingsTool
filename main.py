@@ -61,6 +61,12 @@ async def main():
             if not is_element_asked and not is_element_command_asked:
                 continue
 
+        dom_element = dom.xpath(element['xpath'])
+
+        if 0 not in dom_element:
+            print('Element %s not found. Debug with --screenshot or check your configuration file!' % element_name)
+            continue
+
         element_value = dom.xpath(element['xpath'])[0].text
         if args.commands and 'command' in element:
             print('spc host config %s %s%s' % (element['command'], element_value, element['unit']))
