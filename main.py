@@ -63,7 +63,7 @@ async def main():
 
         dom_element = dom.xpath(element['xpath'])
 
-        if 0 not in dom_element:
+        if not dom_element:
             print('Element %s not found. Debug with --screenshot or check your configuration file!' % element_name)
             continue
 
