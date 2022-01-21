@@ -18,7 +18,13 @@ libs required to run this script.
 After you have successfully installed the libs you can run the script by
 
 ```shell
-python3 main.py -url GRAFANA_URL
+python main.py --url GRAFANA_URL
+```
+
+or
+
+```shell
+python main.py -p PROVIDER_ID 
 ```
 
 It should then return the settings information
@@ -26,6 +32,7 @@ It should then return the settings information
 You also have the following options:
 
  - `--url`: The url of the grafana instance you want to connect to
+ - `--provider-id`: The provider id you want to grab the settings for
  - `--config`: The yaml file for the configuration (this could in future be something hosted in the cloud)
  - `--commands`: Return the settings commands you need to run on your provider
  - `--screenshot`: Saves a screenshot on the root folder of the page you are listening too -- useful for debug

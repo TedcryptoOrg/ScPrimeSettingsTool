@@ -8,7 +8,8 @@ from pyppeteer import launch
 
 parser = argparse.ArgumentParser(description='Process grafana settings')
 parser.add_argument('--config', '-c', help='Path to config file', required=False, default='config.yaml')
-parser.add_argument('--url', '-u', help='Grafana provider url', required=True)
+parser.add_argument('--url', '-u', help='Grafana provider url', required=False)
+parser.add_argument('--provider-id', '-p', help='Grafana provider id', required=False)
 parser.add_argument('--commands', help='Prints commands that need to be run', required=False, default=False, action='store_true')
 parser.add_argument('--screenshot', help='Saves a screenshot of grafane for debug purposes', required=False, default=False, action='store_true')
 parser.add_argument(
@@ -19,11 +20,19 @@ args = parser.parse_args()
 if args.update_settings:
     args.update_settings = args.update_settings.split(',')
 
+if not args.url and not args.provider_id:
+    print("Please provide a grafana url or a provider id")
+    exit(1)
+
+if not args.url:
+    args.url = 'https://grafana.scpri.me/d/Cg7V28sMk/provider-detail?var-provider=' + args.provider_id
+
 with open(args.config, "r") as stream:
     try:
         configs = yaml.safe_load(stream)
     except yaml.YAMLError as exc:
         print(exc)
+
 
 async def main():
     browser = await launch(
@@ -46,7 +55,7 @@ async def main():
         raise Exception("[Pyppeteer] HTTP Code:" + str(response.status), response.status)
 
     if args.screenshot:
-        await page.screenshot({'path': 'example.png', 'fullPage': True})
+        await page.screenshot({'path': 'screenshot.png', 'fullPage': True})
 
     html = await page.content()
     soup = BeautifulSoup(html, 'html.parser')
