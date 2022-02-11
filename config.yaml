@@ -1,26 +1,26 @@
 elements:
   storage_price:
-    label: 'Storage Price (SCP/TB/month)'
+    label: 'Storage Price'
     xpath: '/html/body/div/div/div[2]/div[3]/div[2]/div/div[1]/div/div[2]/div[10]/div/div[1]/div/div[2]/div/div[1]/div/div/div[2]/div/span[1]'
     command: minstorageprice
     unit: SCP
   collateral_price:
-    label: 'Collateral (SCP/TB/month)'
+    label: 'Collateral Price'
     xpath: '/html/body/div/div/div[2]/div[3]/div[2]/div/div[1]/div/div[2]/div[10]/div/div[1]/div/div[2]/div/div[2]/div/div/div[2]/div/span[1]'
     command: collateral
     unit: SCP
   max_collateral:
-    label: 'Max Collateral (SCP/contract)'
+    label: 'Max Collateral'
     xpath: '/html/body/div/div/div[2]/div[3]/div[2]/div/div[1]/div/div[2]/div[10]/div/div[1]/div/div[2]/div/div[3]/div/div/div[2]/div/span[1]'
     command: maxcollateral
     unit: SCP
   download_bandwith_price:
-    label: 'Download Bandwith Price (SCP/TB)'
+    label: 'Download Bandwith'
     xpath: '/html/body/div/div/div[2]/div[3]/div[2]/div/div[1]/div/div[2]/div[10]/div/div[1]/div/div[2]/div/div[4]/div/div/div[2]/div/span[1]'
     command: mindownloadbandwidthprice
     unit: SCP
   upload_bandwith_price:
-    label: 'Upload Bandwith Price (SCP/TB)'
+    label: 'Upload Bandwith'
     xpath: '/html/body/div/div/div[2]/div[3]/div[2]/div/div[1]/div/div[2]/div[10]/div/div[1]/div/div[2]/div/div[5]/div/div/div[2]/div/span[1]'
     command: minuploadbandwidthprice
     unit: SCP
